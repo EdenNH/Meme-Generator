@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gallery-wrap.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/editor-and-canvas.css">
+    <title>Incredible Meme Generator</title>
+</head>
+
+<body onload="init()">
+    <section class="header-page">
+        
+        <div class="container flex align-center space-between header-height">
+            <div class="logo">Awesome Meme Generator </div>
+        </div>
+    </section>
+
+    <main class="main-container container">
+        <section class="images-library display">
+
+            <input type="text" id="myInput" onkeyup="searchImagesByDesc(this.value)" placeholder="Enter text to search our memes">
+
+            <!-- Buttons to search by keywords -->
+            <div class="">
+                <button class="btn btn-warning" onclick="onChooseKeyword(this.value)" value="dog">Dog</button>
+                <button class="btn btn-warning" onclick="onChooseKeyword(this.value)" value="baby">Baby</button>
+                <button class="btn btn-warning" onclick="onChooseKeyword(this.value)" value="cat">Cat</button>
+                <button class="btn btn-warning" onclick="onChooseKeyword(this.value)" value="politics">Politics</button>
+                <button class="btn btn-warning" onclick="onChooseKeyword(this.value)" value="oprah">Oprah</button>
+                <button class="btn btn-danger" onclick="onChooseKeyword('')">X</button>
+
+            </div>
+
+            <div class="gallery-header">Or just click on a lovely picture and get started</div>
+            <ul class="images-cards">
+
+            </ul>
+        </section>
+
+        <section class="editor-with-canvas display-none">
+            <!-- flex container for large screen -->
+            <div class="back-to-and-properties">
+                <button class="btn btn-primary" onclick="showGallery()">Back to Gallery</button>
+                <div class="properties flex">
+                    <input type="text" id="memetext1" oninput="firstMemeText(this.value)" placeholder="Top text for your meme">
+                    <input type="text" id="memetext-extra" oninput="extraMemeText(this.value)" placeholder="Even more text?">
+                    <input type="text" id="memetext2" oninput="secondMemeText(this.value)" placeholder="Bottom text for your meme">
+                    <button class="decrease-font btn btn-light" onclick="changeFontSize('minus')">-</button>
+                    <button class="increase-font btn btn-light" onclick="changeFontSize('plus')">+ </button>
+                    <select id="shapes" onchange="setFontFamily(this.value)">
+                        <option disabled selected>Font</option>
+                        <option>Impact</option>
+                        <option>Arial</option>
+                        <option>Helvetica</option>
+                        <option>Times New Roman</option>
+                        <option>Courier New</option>
+                        <option>Palatino</option>
+                    </select>
+                    <input type="color" id="color" onchange="setColor(this.value)" />
+                    <button class="shadow-text btn btn-light" onclick="onTextShadowToggle()">S</button>
+                    <!-- radio button for text align -->
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-light active left txt-align">
+                            <input type="radio" name="options" value="left" id="option1" autocomplete="off" checked
+                                onclick="onChooseAlign(this.value)">
+                            Left
+                        </label>
+                        <label class="btn btn-light center txt-align">
+                            <input type="radio" name="options" value="center" id="option2" autocomplete="off" checked
+                                onclick="onChooseAlign(this.value)"> Center
+                        </label>
+                        <label class="btn btn-light right txt-align">
+                            <input type="radio" name="options" value="right" id="option3" autocomplete="off" checked
+                                onclick="onChooseAlign(this.value)"> Right
+                        </label>
+                        <label>
+                            <button class="move-text btn btn-light" onclick="moveTextRightOrLeft('left')">
+                                < </button> <button class="move-text btn btn-light" onclick="moveTextRightOrLeft('right')">>
+                            </button>
+                            <button class="move-text btn btn-light" onclick="moveTextUpOrDown('down')">˅</button>
+                            <button class="move-text btn btn-light" onclick="moveTextUpOrDown('up')">^</button>
+                        </label>
+                        <button class="btn btn-primary"> <a onclick="saveCanvas(this)">Save</a></button>
+                    </div>
+
+                </div>
+            </div>
+            <canvas class="canvas center" id="canvas" width="500" height="400"></canvas>
+        </section>
+    </main>
+
+    <footer class="page-footer font-small blue footer-copyright text-center py-3"> This meme generator was created by
+        Anat Zimmerman and Eden Nieuwnhuijs</footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/images-service.js"></script>
+    <script src="js/editor-service.js"></script>
+</body>
+
+</html>

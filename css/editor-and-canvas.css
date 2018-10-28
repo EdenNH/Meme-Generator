@@ -1,0 +1,21 @@
+
+
+.properties a {
+    color: inherit;
+}
+
+.properties button, .properties input {
+    margin-bottom: 10px;
+}
+
+
+.properties button:hover, .properties input:hover {
+background-color: rgb(212, 247, 212);
+}
+
+.canvas {
+    max-width: 100%;
+    border: 8px solid white;
+    border-radius: 2px;
+    margin: 0 auto;
+}
